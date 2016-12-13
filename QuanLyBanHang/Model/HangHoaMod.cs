@@ -79,15 +79,15 @@ namespace QuanLyBanHang.Model
 
         public bool UpdData(HangHoaObj hhObj,int flagLuu, int SL)
         {
-            int hhObj_SaveIntoDB = 0;
+            int SaveIntoDB = 0;
             if(flagLuu == 2)
             {
-                hhObj_SaveIntoDB = hhObj.SoLuong + SL;
+                SaveIntoDB = hhObj.SoLuong + SL;
             }else
             {
-                hhObj_SaveIntoDB = hhObj.SoLuong;
+                SaveIntoDB = hhObj.SoLuong;
             }
-            cmd.CommandText = "Update hanghoa set TenHang =  N'" + hhObj.TenHangHoa + "', SoLuong = " + hhObj_SaveIntoDB + ", DonGia = " + hhObj.DonGia + " Where MaHang = '" + hhObj.MaHangHoa + "'";
+            cmd.CommandText = "Update hanghoa set TenHang =  N'" + hhObj.TenHangHoa + "', SoLuong = " + SaveIntoDB + ", DonGia = " + hhObj.DonGia + " Where MaHang = '" + hhObj.MaHangHoa + "'";
             cmd.CommandType = CommandType.Text;
             cmd.Connection = con.Connection;
             try
