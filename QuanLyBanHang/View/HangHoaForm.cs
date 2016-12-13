@@ -20,6 +20,7 @@ namespace QuanLyBanHang.View
         }
         HangHoaCtrl hhCtr = new HangHoaCtrl();
         private int flagLuu = 0;
+        private int SL = 0;
 
         private void HangHoaForm_Load(object sender, EventArgs e)
         {
@@ -111,14 +112,14 @@ namespace QuanLyBanHang.View
             }
             else if (flagLuu == 1)
             {
-                if (hhCtr.UpdData(hhObj))
+                if (hhCtr.UpdData(hhObj,1,SL))
                     MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     MessageBox.Show("Sửa không thành công!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
+            else if(flagLuu == 2)
             {
-                if (hhCtr.UpdData(hhObj))
+                if (hhCtr.UpdData(hhObj,2,SL))
                     MessageBox.Show("Nhập hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     MessageBox.Show("Nhập hàng không thành công!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -154,6 +155,10 @@ namespace QuanLyBanHang.View
         private void btnNhapHang_Click(object sender, EventArgs e)
         {
             flagLuu = 2;
+            // Lấy giá trị hiện tại của txtSL
+            SL = int.Parse(txtSL.Text);
+            // Sau đó mới gán bằng 0 (để khi nhấn Nhập hàng thì cộng lên thì vẫn như cũ)
+            txtSL.Text = "0";
             btnNhapHang.Enabled = false;
             btnThem.Enabled = false;
             btnXoa.Enabled = false;

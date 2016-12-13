@@ -41,7 +41,7 @@ namespace QuanLyBanHang.Model
         #region Contrustor
         public ConnectDatabase()
         {
-            StrCon = @"Data Source=VU;Initial Catalog=QLBH;Integrated Security=True";
+            StrCon = @"Data Source=(local);Initial Catalog=QLBH;Integrated Security=True";
             //Conn = new MySqlConnection(StrCon);
             Conn = new SqlConnection(StrCon);
         }

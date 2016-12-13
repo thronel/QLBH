@@ -77,9 +77,17 @@ namespace QuanLyBanHang.Model
             return false;
         }
 
-        public bool UpdData(HangHoaObj hhObj)
+        public bool UpdData(HangHoaObj hhObj,int flagLuu, int SL)
         {
-            cmd.CommandText = "Update hanghoa set TenHang =  N'" + hhObj.TenHangHoa + "', SoLuong = " + hhObj.SoLuong + ", DonGia = " + hhObj.DonGia + " Where MaHang = '" + hhObj.MaHangHoa + "'";
+            int hhObj_SaveIntoDB = 0;
+            if(flagLuu == 2)
+            {
+                hhObj_SaveIntoDB = hhObj.SoLuong + SL;
+            }else
+            {
+                hhObj_SaveIntoDB = hhObj.SoLuong;
+            }
+            cmd.CommandText = "Update hanghoa set TenHang =  N'" + hhObj.TenHangHoa + "', SoLuong = " + hhObj_SaveIntoDB + ", DonGia = " + hhObj.DonGia + " Where MaHang = '" + hhObj.MaHangHoa + "'";
             cmd.CommandType = CommandType.Text;
             cmd.Connection = con.Connection;
             try

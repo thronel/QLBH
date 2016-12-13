@@ -24,9 +24,9 @@ namespace QuanLyBanHang.Control
         {
             return hhMod.AddData(hhObj);
         }
-        public bool UpdData(HangHoaObj hhObj)
+        public bool UpdData(HangHoaObj hhObj,int flagLuu, int SL)
         {
-            return hhMod.UpdData(hhObj);
+            return hhMod.UpdData(hhObj,flagLuu, SL);
         }
         public bool UpdSL(DataTable dt)
         {
